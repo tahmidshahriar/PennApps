@@ -8,11 +8,22 @@
  
     <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
     <link href="../static/app.css" rel="stylesheet">
+    <link href="../static/main.css" rel="stylesheet">
+
     
   </head>
 
   <body>
 
+<<<<<<< HEAD
+    <div class = "main">
+        <div id = "headerBar">
+        <div id="logo">PennLunch</div>
+
+        <button class='btns'  id="home" style="color: white;"> <a href="/index"> Home </a> </button>
+        <button class='btns' id="login"><a href="/login"> Login </a> </button> 
+        <button class='btns' id="signup"><a href="/signup"> Sign Up </a> </button> 
+=======
     <div class="containers">
       <div class="header">
         <nav>
@@ -33,11 +44,12 @@
         </nav>
         <h3 class="text-muted">PennLunch</h3>
       </div>
+>>>>>>> upstream/master
 
-<h1>Log In</h1>
-  <form action="" method="post" name="login">
+<h1><center>Log In</center></h1>
+  <form action="" method="post" name="login"><center>
       {{ form.hidden_tag() }}
-      <p>
+      <p style="margin:20px">
           Username:<br>
           {{ form.username(size=80) }}<br>
       </p>
@@ -45,5 +57,5 @@
           Password:<br>
           {{ form.password(size=80) }}<br>
       </p>
-      <p><input type="submit" value="Log In"></p>
-  </form>
+      <p style="color:black;"><input type="submit" value="Log In"></p>
+  </center></form>
