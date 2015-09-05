@@ -24,7 +24,7 @@
     float: left;
     position: relative;
     left: 40px;
-    top: 10%;
+    top: 15px;
     font-size: 20px;
 
 }
@@ -35,7 +35,7 @@
     width: 50px;
     vertical-align: middle;
     position: relative;
-    top: 15%;
+    top: 5px;
     left: 30px;
     float: left;
 }
@@ -62,10 +62,19 @@
     position: relative;
     right: 50px;
     display: inline;
+    top: -38px;
 }
 
 #main-container {
 	display: inline;
+	margin-right: -700px;
+	position: relative;
+	left: 25%;
+	top: 10px;
+}
+
+.turnBlack {
+	color: black;
 }
 </style>
 
@@ -81,7 +90,7 @@
 		<div id="headerBar">
         <img id="profpicHeader" src="https://upload.wikimedia.org/wikipedia/commons/c/cd/Panda_Cub_from_Wolong,_Sichuan,_China.JPG"/>
         <p id="name">Arvind Raju</p>
-        <div id="main-container ">
+        <div id="main-container">
 			            
 
 
@@ -89,20 +98,20 @@
 
 
 
-			            <div class="col-md-12">
+			            
 
 
 			            			            <form class="form-horizontal" method="post" action="">
 						{{ form.hidden_tag() }}
-                        <label class="control-label" for="txtTitle">Title: {{ form.title }}</label> 
+                        <label class="control-label" for="txtTitle">Title: <span class="turnBlack">{{ form.title }}</span></label> 
 
 
-                        <label class="control-label" for="txtPost">Post: {{ form.post }}</label>
+                        <label class="control-label" for="txtPost">Post: <span class="turnBlack">{{ form.post }}</span></label>
   
 
                             <input class="btn btn-primary" type="submit" value="Post" />
                             </form>
-                            </div>
+                            
 			</div>
 
         <p class='headerBarButton' id="logoutButton">Log Out</p>
