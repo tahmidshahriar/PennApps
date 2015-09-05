@@ -24,7 +24,8 @@
 
 
                         <label class="control-label" for="txtPost">Post: {{ form.post }}</label>
-   
+  
+
                             <input class="btn btn-primary" type="submit" value="Post" />
                             </form>
                             </div>
@@ -50,7 +51,15 @@
 									<p>
 										{{ post['post'] }}
 									</p>
-									<a class="btn btn-xs btn-success"><i class="fa fa-reply"></i> Respond</a>
+
+									<p>
+										{{ post['name'] }}
+									</p>
+
+									<p>
+										{{ post['phone'] }}
+									</p>
+									<a class="btn btn-xs btn-success" href="/sendMessage/{{post['phone']}}"><i class="fa fa-reply"></i>Respond</a>
 								</div>
 							</div><!-- /panel -->
 						</div><!-- /timeline-item -->

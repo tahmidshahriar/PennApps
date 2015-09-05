@@ -7,19 +7,26 @@
     <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
  
     <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
-    <link href="../static/signup.css" rel="stylesheet">
+    <link href="../static/app.css" rel="stylesheet">
     
   </head>
 
   <body>
 
-    <div class="container">
+    <div class="containers">
       <div class="header">
         <nav>
           <ul class="nav nav-pills pull-right">
             <li role="presentation" ><a href="/index">Home</a></li>
-            <li role="presentation"><a href="/login">Log In</a></li>
+            {% if session.get('loggedinName') == None %} 
+            <li role="presentation"><a href="/login">Log In</a></li> 
             <li role="presentation" class="active"><a href="/signup">Sign Up</a></li>
+            {% endif %}
+            {% if session.get('loggedinName') != None %} 
+                        <li role="presentation"><a href="/signout">Sign Out</a></li>
+            {% endif %}
+
+
           </ul>
         </nav>
         <h3 class="text-muted">PennLunch</h3>
@@ -36,5 +43,24 @@
           Password:<br>
           {{ form.password(size=80) }}<br>
       </p>
+      <p>
+          First Name:<br>
+          {{ form.firstname(size=80) }}<br>
+      </p>
+      <p>
+          Last Name:<br>
+          {{ form.lastname(size=80) }}<br>
+      </p>
+      <p>
+          Phone:<br>
+          {{ form.phone(size=80) }}<br>
+      </p>
+
+      <p>
+          Email:<br>
+          {{ form.email(size=80) }}<br>
+      </p>
+
+
       <p><input type="submit" value="Sign Up"></p>
   </form>

@@ -13,22 +13,37 @@
 
   <body>
 
-  	<div class="containers">
-      <div class="header">
-        <nav>
-          <ul class="nav nav-pills pull-right">
-            <li role="presentation" class="active" ><a href="/index">Home</a></li>
-            <li role="presentation"><a href="/login">Log In</a></li>
-            <li role="presentation"><a href="/signup">Sign Up</a></li>
-          </ul>
-        </nav>
-        <h3 class="text-muted">PennLunch</h3>
-      </div>
 
-    <title>{{ title }} - microblog</title>
-      <h1>{{ user1.nickname }}: {{user1.statement}}</h1>
-      <h1>{{ user2.nickname }}: {{user2.statement}}</h1>
+    <div class = "main">
+        <div id = "headerBar">
+        <div id="logo">PennLunch</div> 
 
+        {% if session.get('loggedinName') != None %} 
+        <button class='btns' id="signup"><a href="/signout"> Sign Out </a> </button> 
+        {% endif %}
+        <button class='btns'  id="home" style="color: white;"> <a href="/index"> Home </a> </button>
+        {% if session.get('loggedinName') == None %} 
+        <button class='btns' id="login"><a href="/login"> Login </a> </button> 
+        <button class='btns' id="signup"><a href="/signup"> Sign Up </a> </button> 
+        {% endif %}
+
+
+          <!-- <ul class="nav nav-pills pull-right">
+            <li role="presentation" id="login" class="active" ><a href="/index">Home</a></li>
+            <li role="presentation" id="login"><a href="/login">Log In</a></li>
+            <li role="presentation" id="signup"><a href="/signup">Sign Up</a></li>
+          </ul> -->
+
+    </div>
+        <h1 style="margin-top:100px">MEET, GREET AND EAT AT PENN </h1>
+        <h3 style="margin:20px">Expand your horizons by having lunch with someone new.</h3>
+
+        <h4 style="margin-top: 50px"><a class="btn-default" href="#" role="button">Learn more</a></h4>
+    
+    </div>
+    <div id = "footer"></div>
+
+<section>
     <div class="container" id="newfriends">
       <h1> <strong> <center> Meet New Friends </center> <strong> </h1>
       <p> <center> Grab meals with students you otherwise never would've met </center> </p>
@@ -53,6 +68,30 @@
 
             </div>
     </div>
+
+    <div class="row" id="pics">
+        <h1> <strong> <center> Discover New Restaurants </center> <strong> </h1>
+      <p> <center> Explore Philadelphia by trying new restaurants with new friends </center> </p>
+            <div class="col-md-4" id="pic">
+              
+              <img src="static/juliadrinksagain.jpg" alt="Paul Rivera teaching">
+
+            </div>
+
+            <div class="col-md-4" id="pic">
+              
+              <img src="static/jianfood.jpg" alt="Paul Rivera teaching">
+
+            </div>
+
+            <div class="col-md-4" id="pic">
+
+              <img src="static/pataya.jpg" alt="Students pitching">
+
+            </div>
+    </div>
+
+</section>
 
 
   </body>
