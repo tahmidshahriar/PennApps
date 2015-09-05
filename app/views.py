@@ -49,9 +49,9 @@ def login():
 			if(len(usernameToVerify) == 0):
 				return redirect('/login')
 			elif(request.form['password'] == usernameToVerify[0]['password']):
-				return redirect('www.google.com')
+				return redirect('/newsFeedStuff')
 			else:
-				return redirect('www.abc.xyz')
+				return redirect('/login')
 
 
 		except pymongo.errors.ConnectionFailure, e:
