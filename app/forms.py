@@ -5,3 +5,7 @@ from wtforms.validators import Required, Email
 class LoginForm(Form):
     username = TextField('username', validators=[Required()])
     password = TextField('password', validators=[Required()])
+
+class LunchForm(Form):
+	title = TextField('title', validators=[Required()])
+	post = TextField('post', validators=[Required()])

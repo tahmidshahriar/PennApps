@@ -1,0 +1,13 @@
+<h1>Let's eat some lunch bitches</h1>
+  <form action="" method="post" name="login">
+      {{ form.hidden_tag() }}
+      <p>
+          What's your lunch title:<br>
+          {{ form.title(size=80) }}<br>
+      </p>
+      <p>
+          Details:<br>
+          {{ form.post(size=80) }}<br>
+      </p>
+      <p><input type="submit" value="Sign In"></p>
+  </form>
