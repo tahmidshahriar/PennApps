@@ -91,7 +91,6 @@ def newsFeedStuff():
 			print "Could not connect to MongoDB: %s" % e
 			return render_template('newsFeed.html', title='NewsFeed', myList = myList, form = form)
 
-<<<<<<< HEAD
 @app.route('/newsFeedStuff', methods=['GET', 'POST'])
 def newsFeed():
 	try:
@@ -111,9 +110,7 @@ def newsFeed():
 	except pymongo.errors.ConnectionFailure, e:
 		print "Could not connect to MongoDB: %s" % e
 		return redirect('/temp.html')
-=======
 
->>>>>>> upstream/master
 
 
 
