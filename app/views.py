@@ -35,7 +35,7 @@ def signup():
 			print "Could not connect to MongoDB: %s" % e
 			return redirect('/index')
 	else:
-		return render_template('login.html', title='Sign In', form=form)
+		return render_template('signup.html', title='Sign Up', form=form)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
