@@ -8,24 +8,22 @@
  
     <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
     <link href="../static/app.css" rel="stylesheet">
+    <link href="../static/main.css" rel="stylesheet">
+
     
   </head>
 
   <body>
 
-    <div class="containers">
-      <div class="header">
-        <nav>
-          <ul class="nav nav-pills pull-right">
-            <li role="presentation" ><a href="/index">Home</a></li>
-            <li role="presentation"><a href="/login">Log In</a></li>
-            <li role="presentation" class="active"><a href="/signup">Sign Up</a></li>
-          </ul>
-        </nav>
-        <h3 class="text-muted">PennLunch</h3>
-      </div>
+    <div class = "main">
+        <div id = "headerBar">
+        <div id="logo">PennLunch</div>
 
-<h1>Sign Up</h1>
+        <button class='btns'  id="home" style="color: white;"> <a href="/index"> Home </a> </button>
+        <button class='btns' id="login"><a href="/login"> Login </a> </button> 
+        <button class='btns' id="signup"><a href="/signup"> Sign Up </a> </button> 
+
+<h1 style="margin:20px">Sign Up</h1>
   <form action="" method="post" name="login">
       {{ form.hidden_tag() }}
       <p>
@@ -55,5 +53,5 @@
       </p>
 
 
-      <p><input type="submit" value="Sign Up"></p>
+      <p style="color:black;"><input type="submit" value="Sign Up"></p>
   </form>
