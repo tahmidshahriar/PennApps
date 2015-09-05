@@ -18,8 +18,17 @@
         <nav>
           <ul class="nav nav-pills pull-right">
             <li role="presentation" ><a href="/index">Home</a></li>
+                        {% if session.get('loggedinName') == None %} 
             <li role="presentation" class="active"><a href="/login">Log In</a></li>
             <li role="presentation"><a href="/signup">Sign Up</a></li>
+                        {% endif %}
+
+    {% if session.get('loggedinName') != None %} 
+                        <li role="presentation"><a href="/signout">Sign Out</a></li>
+    {% endif %}
+
+
+
           </ul>
         </nav>
         <h3 class="text-muted">PennLunch</h3>

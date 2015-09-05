@@ -14,7 +14,8 @@ def index():
     return render_template('index.html',
                            title='Home',
                            user1=user1,
-                           user2=user2)
+                           user2=user2,
+                           session=session)
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
@@ -39,7 +40,7 @@ def signup():
 			print "Could not connect to MongoDB: %s" % e
 			return redirect('/index')
 	else:
-		return render_template('signup.html', title='Sign Up', form=form)
+		return render_template('signup.html', title='Sign Up', form=form, session = session)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -68,6 +69,8 @@ def login():
 
 @app.route('/newsFeedStuff', methods=['GET', 'POST'])
 def newsFeedStuff():
+	if (session.get('loggedinName') == None):
+		return redirect('/index')
 	form = LunchForm()
 	if form.validate_on_submit():
 		try:
@@ -111,3 +114,8 @@ def twilioMessage(number):
 	    from_="+16463625482") # Replace with your Twilio number
 	return redirect('/newsFeedStuff')
 
+@app.route('/signout', methods=['GET', 'POST'])
+def signout():
+	session['loggedinName'] = None
+	session['loggedinPhone'] = None
+	return redirect('/index')

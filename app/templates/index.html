@@ -16,11 +16,16 @@
 
     <div class = "main">
         <div id = "headerBar">
-        <div id="logo">PennLunch</div>
+        <div id="logo">PennLunch</div> 
 
+        {% if session.get('loggedinName') != None %} 
+        <button class='btns' id="signup"><a href="/signout"> Sign Out </a> </button> 
+        {% endif %}
         <button class='btns'  id="home" style="color: white;"> <a href="/index"> Home </a> </button>
+        {% if session.get('loggedinName') == None %} 
         <button class='btns' id="login"><a href="/login"> Login </a> </button> 
         <button class='btns' id="signup"><a href="/signup"> Sign Up </a> </button> 
+        {% endif %}
 
 
           <!-- <ul class="nav nav-pills pull-right">
