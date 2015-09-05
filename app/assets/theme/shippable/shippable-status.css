@@ -1,0 +1,133 @@
+/* Endless colors */
+
+/*badge*/
+.ship-status-badge {
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+}
+a.badge-none:hover {
+    color: #999;
+}
+.ship-badge-waiting{
+    background-color: #eeeeee;
+    color: #fff;
+}
+.ship-badge-queued{
+    background-color: #eeeeee;
+    color: #fff;
+}
+.ship-badge-processing{
+    background-color: #424f63;
+    color: #fff;
+}
+.ship-badge-success{
+    background-color: #65cea7;
+    color: #fff;
+}
+.ship-badge-skipped{
+    background-color: #f3ce85;
+    color: #fff;
+}
+.ship-badge-unstable{
+    background-color: #f3ce85;
+    color: #fff;
+}
+.ship-badge-timeout{
+    background-color: #fc8675;
+    color: #fff;
+}
+.ship-badge-cancelled{
+    background-color: #f3ce85;
+    color: #fff;
+}
+.ship-badge-failed{
+    background-color: #fc8675;
+    color: #fff;
+}
+.ship-badge-new{
+    background-color: #eeeeee;
+    color: #fff;
+}
+.ship-badge-initialized{
+    background-color: #f3ce85;
+    color: #000;
+}
+
+
+/*background*/
+.ship-bg-waiting {
+  background-color: #eeeeee !important;
+}
+.ship-bg-queued {
+  background-color: #eeeeee !important;
+}
+.ship-bg-processing {
+  background-color: #424f63 !important;
+}
+.ship-bg-success {
+  background-color: #65cea7 !important;
+}
+.ship-bg-skipped {
+  background-color: #f3ce85 !important;
+}
+.ship-bg-unstable {
+  background-color: #f3ce85 !important;
+}
+.ship-bg-timeout {
+  background-color: #fc8675 !important;
+}
+.ship-bg-cancelled {
+  background-color: #f3ce85 !important;
+}
+.ship-bg-failed {
+  background-color: #fc8675 !important;
+}
+.ship-bg-new {
+  background-color: #eeeeee !important;
+}
+.ship-bg-initialized {
+  background-color: #f3ce85 !important;
+}
+.ship-bg-default {
+  background-color: #f9f9f9 !important;
+}
+
+/*textClass*/
+.ship-text-waiting {
+  color: #eeeeee !important;
+}
+.ship-text-queued {
+  color: #eeeeee !important;
+}
+.ship-text-processing {
+  color: #424f63 !important;
+}
+.ship-text-success {
+  color: #65cea7 !important;
+}
+.ship-text-skipped {
+  color: #f3ce85 !important;
+}
+.ship-text-unstable {
+  color: #f3ce85 !important;
+}
+.ship-text-timeout {
+  color: #fc8675 !important;
+}
+.ship-text-cancelled {
+  color: #f3ce85 !important;
+}
+.ship-text-failed {
+  color: #fc8675 !important;
+}
+.ship-text-new {
+  color: #eeeeee !important;
+}
+.ship-text-initialized {
+  color: #f3ce85 !important;
+}
+.ship-text-default {
+  color: #f9f9f9 !important;
+}

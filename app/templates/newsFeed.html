@@ -1,8 +1,68 @@
-{% for (post in mylist) %}
-	<h1> a </h1>
-	<h1>{{ post('title') }} </h1>
-{% endfor %}
+<head>
+	<link href="static/app.css" rel="stylesheet" media="screen">	
+</head>
+<body>
+<div>
+	
 
-<h1> Post 1 </h1>
-<h2> Post 2 </h2>
-<h3> Post 3 </h3>
+<div id="wrapper" class="">
+		<!-- /top-nav-->
+		<div id="main-container ">
+
+			<div class="padding-md row col-md-12">
+				<form action="submit" method="post">
+                    <div class="form-group">
+                        <label class="control-label" for="txtTitle">Title: {{ form.title }}</label> 
+                    </div>
+
+
+                    <!-- Textarea -->
+                    <div class="form-group">
+                        <label class="control-label" for="txtPost">Post: {{ form.post }}</label>
+                    </div>
+ 
+                    <!-- Button -->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="singlebutton"></label>
+                        <div class="col-md-4">
+                            <input id="singlebutton" name="singlebutton" class="btn btn-primary" type="submit" value="Publish" />
+                        </div>
+                    </div>
+ 				</form>
+			</div>
+
+
+			<div class="padding-md row col-md-12">
+				<div class="timeline-wrapper">
+					<!-- /timeline-item -->
+					{% for post in myList %}
+						<div class="timeline-item">
+							<div class="timeline-info">
+								<div class="time">
+									06:50 Am
+								</div>
+							</div>
+							<div class="panel panel-default timeline-panel">
+								<div class="panel-heading">
+									{{ post['title'] }}
+
+								</div>
+								<div class="panel-body">
+									<p>
+										{{ post['post'] }}
+									</p>
+									<a class="btn btn-xs btn-success"><i class="fa fa-reply"></i> Respond</a>
+								</div>
+							</div><!-- /panel -->
+						</div><!-- /timeline-item -->
+						<div class="seperator"></div>		
+					{% endfor %}
+
+				</div><!-- /timeline-wrapper -->
+			</div><!-- /.padding -->
+		</div><!-- /main-container -->
+	</div>
+
+
+</div>
+</body>

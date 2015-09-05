@@ -60,13 +60,21 @@ def login():
 	else:
 		return render_template('login.html', title='Sign In', form=form)
 
-@app.route('/addLunchRequest')
-def showAddWish():
-    return render_template('addWish.html')
 
+@app.route('/newsFeedStuff', methods=['GET', 'POST'])
+def newsFeed():
+	try:
+		conn=pymongo.MongoClient()
+		db = conn.pennapps
+		lunchDetails = db.lunchDetails
+		myList = list(lunchDetails.find())
+		return render_template('newsFeed.html', title='NewsFeed', myList = myList)
+	
+	except pymongo.errors.ConnectionFailure, e:
+		print "Could not connect to MongoDB: %s" % e
+		return render_template('newsFeed.html', title='NewsFeed', myList = myList)
 
-@app.route('/lunchPost', methods=['GET', 'POST'])
-def lunchPost():
+def submit():
 	form = LunchForm()
 	if form.validate_on_submit():
 		try:
@@ -77,33 +85,10 @@ def lunchPost():
 			data['title'] = request.form['title']
 			data['post'] = request.form['post']
 			lunchDetails.insert(data)
-			return redirect('/index')
+			newsFeed()
 		except pymongo.errors.ConnectionFailure, e:
 			print "Could not connect to MongoDB: %s" % e
-			return redirect('/temp.html')
-	else:
-		return render_template('temp.html', title='ADD A WISH', form=form)
-
-
-@app.route('/newsFeedStuff', methods=['GET', 'POST'])
-def newsFeed():
-	try:
-		conn=pymongo.MongoClient()
-		db = conn.pennapps
-		lunchDetails = db.lunchDetails
-		myList = list(lunchDetails.find())
-		f = open('./templates/temporary.html','w')
-		message = """<html>
-		<head></head>
-		<body><p> s""" + myList[0]['title'] + """</p></body>
-		</html>"""
-		f.write(message)
-
-		f.close()
-		return render_template('news.html')	
-	except pymongo.errors.ConnectionFailure, e:
-		print "Could not connect to MongoDB: %s" % e
-		return redirect('/temp.html')
+			newsFeed()
 
 
 
