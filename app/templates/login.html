@@ -8,36 +8,35 @@
  
     <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
     <link href="../static/app.css" rel="stylesheet">
+    <link href="../static/main.css" rel="stylesheet">
+
     
   </head>
 
   <body>
 
+    <div class = "main">
+        <div id = "headerBar">
+        <div id="logo">PennLunch</div>
+
+        <button class='btns'  id="home" style="color: black;"> <a href="/index"> Home </a> </button>
+
+        {% if session.get('loggedinName') == None %} 
+        <button class='btns' id="login"><a href="/login"> Login </a> </button> 
+        <button class='btns' id="signup"><a href="/signup"> Sign Up </a> </button> 
+        {% endif %}
+        {% if session.get('loggedinName') != None %} 
+        <button class='btns' id="signup"><a href="/signout"> Sign Out </a> </button> 
+        {% endif %}
+
+
     <div class="containers">
-      <div class="header">
-        <nav>
-          <ul class="nav nav-pills pull-right">
-            <li role="presentation" ><a href="/index">Home</a></li>
-                        {% if session.get('loggedinName') == None %} 
-            <li role="presentation" class="active"><a href="/login">Log In</a></li>
-            <li role="presentation"><a href="/signup">Sign Up</a></li>
-                        {% endif %}
-
-    {% if session.get('loggedinName') != None %} 
-                        <li role="presentation"><a href="/signout">Sign Out</a></li>
-    {% endif %}
 
 
-
-          </ul>
-        </nav>
-        <h3 class="text-muted">PennLunch</h3>
-      </div>
-
-<h1>Log In</h1>
-  <form action="" method="post" name="login">
+<h1><center>Log In</center></h1>
+  <form style="color:black" action="" method="post" name="login"><center>
       {{ form.hidden_tag() }}
-      <p>
+      <p style="margin:20px">
           Username:<br>
           {{ form.username(size=80) }}<br>
       </p>
@@ -45,5 +44,5 @@
           Password:<br>
           {{ form.password(size=80) }}<br>
       </p>
-      <p><input type="submit" value="Log In"></p>
-  </form>
+      <p style="color:black;"><input type="submit" value="Log In"></p>
+  </center></form>

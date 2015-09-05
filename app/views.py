@@ -3,15 +3,14 @@ from app import app
 from .forms import LoginForm, LunchForm, SignupForm
 import pymongo, time
 from twilio.rest import TwilioRestClient
-from flask_mail import Mail, Message
-
-mail = Mail()
-mail.init_app(app)
 
 @app.route('/')
 @app.route('/index')
 def index():
+<<<<<<< HEAD
     
+=======
+>>>>>>> upstream/master
     return render_template('index.html',
                            session=session)
 
@@ -34,10 +33,6 @@ def signup():
 			data['phone'] = request.form['phone']
 			data['email'] = request.form['email']
 			userInfo.insert(data)
-			msg = Message("Hello",
-                  sender="tahmids94@gmail.com",
-                  recipients=[data['email']])
-			mail.send(msg)
 			return redirect('/index')
 
 		except pymongo.errors.ConnectionFailure, e:
