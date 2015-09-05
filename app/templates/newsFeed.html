@@ -1,13 +1,86 @@
 <head>
-	<link href="static/app.css" rel="stylesheet" media="screen">	
-</head>
+	 <style>
+	 html,body{
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden; 
+    background-color: #F0FFFF;
+}
+
+#headerBar {
+    height: 80px;
+    background-color: #5cb85c;
+    vertical-align: bottom;
+    color: white;
+    font-weight: 400;
+    font-size: 18px;
+}
+
+#name {
+    display: inline;
+    float: left;
+    position: relative;
+    left: 40px;
+    top: 10%;
+    font-size: 20px;
+
+}
+
+#profpicHeader {
+    display: inline;
+    height: 50px;
+    width: 50px;
+    vertical-align: middle;
+    position: relative;
+    top: 15%;
+    left: 30px;
+    float: left;
+}
+
+#newsfeedHeaderButton {
+    display: inline;
+    float: right;
+    position: relative;
+    right: 260px;
+
+}
+
+#newPostButton {
+    right: 93px;
+}
+
+.headerBarButton {
+    position: relative;
+    float: right;
+    top: 10px;
+}
+
+#logoutButton {
+    position: relative;
+    right: 50px;
+    display: inline;
+}
+
+#main-container {
+	display: inline;
+}
+</style>
+
+
+
+</head> 
 <body>
 <div>
 	
 
 <div id="wrapper" class="">
 		<!-- /top-nav-->
-		<div id="main-container ">
+		<div id="headerBar">
+        <img id="profpicHeader" src="https://upload.wikimedia.org/wikipedia/commons/c/cd/Panda_Cub_from_Wolong,_Sichuan,_China.JPG"/>
+        <p id="name">Arvind Raju</p>
+        <div id="main-container ">
 			            
 
 
@@ -30,6 +103,9 @@
                             </form>
                             </div>
 			</div>
+
+        <p class='headerBarButton' id="logoutButton">Log Out</p>
+    </div>
 
 			<div class="padding-md row col-md-12">
 				<div class="timeline-wrapper">

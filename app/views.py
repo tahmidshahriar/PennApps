@@ -11,14 +11,8 @@ mail.init_app(app)
 @app.route('/')
 @app.route('/index')
 def index():
-    user1= {'nickname': 'Arvind',
-    		'statement': 'Fuck you Tahmid'} 
-    user2= {'nickname': 'Tahmid',
-    		'statement': 'But Whyyyyyyyyy'} # fake user
+    
     return render_template('index.html',
-                           title='Home',
-                           user1=user1,
-                           user2=user2,
                            session=session)
 
 @app.route('/signup', methods=['GET', 'POST'])
