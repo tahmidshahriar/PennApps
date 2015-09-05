@@ -46,8 +46,12 @@ def login():
 			db = conn.pennapps
 			userInfo = db.userInfo
 			usernameToVerify = userInfo.find({'username': request.form['username']})
-			if(request.form['password'] == usernameToVerify[0]['password']):
+			if(list(usernameToVerify) == []):
+				return redirect('/login')
+			elif(request.form['password'] == usernameToVerify[0]['password']):
 				return redirect('www.google.com')
+			else: 
+				return redirect('/login')
 
 
 		except pymongo.errors.ConnectionFailure, e:
