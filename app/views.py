@@ -91,7 +91,29 @@ def newsFeedStuff():
 			print "Could not connect to MongoDB: %s" % e
 			return render_template('newsFeed.html', title='NewsFeed', myList = myList, form = form)
 
+<<<<<<< HEAD
+@app.route('/newsFeedStuff', methods=['GET', 'POST'])
+def newsFeed():
+	try:
+		conn=pymongo.MongoClient()
+		db = conn.pennapps
+		lunchDetails = db.lunchDetails
+		myList = list(lunchDetails.find())
+		f = open('temporary.html','w')
+		message = """<html>
+		<head></head>
+		<body><p> s""" + myList[0]['title'] + """</p></body>
+		</html>"""
+		f.write(message)
 
+		f.close()
+		return render_template('temporary.html')	
+	except pymongo.errors.ConnectionFailure, e:
+		print "Could not connect to MongoDB: %s" % e
+		return redirect('/temp.html')
+=======
+
+>>>>>>> upstream/master
 
 
 
