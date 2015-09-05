@@ -7,7 +7,7 @@ from twilio.rest import TwilioRestClient
 @app.route('/')
 @app.route('/index')
 def index():
-    return render_template('index.html',
+	return render_template('index.html',
                            session=session)
 
 @app.route('/signup', methods=['GET', 'POST'])

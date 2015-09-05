@@ -1,0 +1,91 @@
+html,body{
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden; 
+    background-color: #F0FFFF;
+}
+
+#headerBar {
+    height: 80px;
+    background-color: #5cb85c;
+    vertical-align: bottom;
+    color: white;
+    font-weight: 400;
+    font-size: 18px;
+}
+
+#name {
+    display: inline-table;
+    float: left;
+    position: relative;
+    left: 40px;
+    top: 10%;
+    font-size: 20px;
+
+}
+
+#profpicHeader {
+    display: inline-table;
+    height: 50px;
+    width: 50px;
+    vertical-align: middle;
+    position: relative;
+    top: 15%;
+    left: 30px;
+    float: left;
+}
+
+#newsfeedHeaderButton {
+    display: inline-table;
+    float: right;
+    position: relative;
+    right: 260px;
+
+}
+
+#newPostButton {
+    right: 93px;
+}
+
+.headerBarButton {
+    position: relative;
+    float: right;
+    top: 10px;
+}
+
+#logoutButton {
+    position: relative;
+    right: 50px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
