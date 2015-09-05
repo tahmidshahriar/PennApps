@@ -92,7 +92,7 @@ def newsFeed():
 		db = conn.pennapps
 		lunchDetails = db.lunchDetails
 		myList = list(lunchDetails.find())
-		f = open('./templates/temporary.html','w')
+		f = open('temporary.html','w')
 		message = """<html>
 		<head></head>
 		<body><p> s""" + myList[0]['title'] + """</p></body>
@@ -100,7 +100,7 @@ def newsFeed():
 		f.write(message)
 
 		f.close()
-		return render_template('news.html')	
+		return render_template('temporary.html')	
 	except pymongo.errors.ConnectionFailure, e:
 		print "Could not connect to MongoDB: %s" % e
 		return redirect('/temp.html')
