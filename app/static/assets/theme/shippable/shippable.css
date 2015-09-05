@@ -1,0 +1,212 @@
+.headline {
+    margin: 0;
+}
+
+.headline .line {
+    background-color: #B7410E;
+    background-image: none;
+    background-repeat: repeat;
+    background-attachment: scroll;
+    background-position: 0% 0%;
+    background-clip: border-box;
+    background-origin: padding-box;
+    background-size: auto auto;
+}
+
+.ship-clear-both {
+    clear: both;
+}
+
+.ship-color-rust {
+    color: #B7410E;
+}
+
+.ship-w60r-h60 {
+    width: 60px;
+    height: 60px;
+}
+
+.ship-w40r-h40 {
+    width: 40px;
+    height: 40px;
+}
+
+.ship-w20r-h20 {
+    width: 20px;
+    height: 20px;
+}
+
+.ship-center-loading {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.ship-user-title {
+    position: fixed;
+    width: 100%;
+    color: #FFF;
+    cursor: default;
+    line-height: 45px;
+    text-align: center;
+}
+
+@media screen and (max-width: 767px) {
+    .ship-user-title {
+        width: 140%;
+        color: #FFF;
+        cursor: default;
+        line-height: 45px;
+        float: left;
+        position: fixed;
+    }
+}
+
+.ship-tab-pane {
+    padding-top: 0px !important;
+    padding-right: 0px !important;
+    padding-bottom: 0px !important;
+    padding-left: 0px !important;
+}
+
+.ship-tab-bar-top {
+    float: none !important;
+}
+
+.ship-tab-bar-top > li {
+    display: inline-block !important;
+}
+
+.ship-table-middle {
+    vertical-align: middle !important;
+    height: 100%;
+}
+
+.sf-05 {
+    font-size: 0.5em;
+}
+
+.sf-15 {
+    font-size: 1.5em;
+}
+
+.sf-20 {
+    font-size: 2em;
+}
+
+.sf-40 {
+    font-size: 4em;
+}
+
+.sf-60 {
+    font-size: 6em;
+}
+
+.ship-wide-button {
+    width: 100%;
+    height: 60px;
+    text-align: left;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.ship-cursor-pointer {
+    cursor: pointer;
+}
+
+.ship-unfloat {
+    clear: both;
+}
+
+/*console styling*/
+.ship-console {
+    background-color: black;
+    padding: 10px;
+    padding-bottom: 5px;
+    border-radius: 7px;
+    color: white;
+    font-family: monospace;
+    word-wrap: break-word;
+}
+
+.ship-console-scripts {
+    white-space: pre;
+}
+
+.ship-console-group {
+    margin: 6px;
+    background-color: #1C1C1C;
+    padding: 7px 7px 5px 7px;
+    border-radius: 5px;
+}
+
+.ship-console-command {
+    margin: 2px;
+    margin-top: 4px;
+    padding: 2px;
+    margin-left: 40px;
+
+}
+
+.ship-console-command-line {
+    margin-right: 30px;
+    margin-bottom: 3px;
+    border-bottom: 1px solid #1C1C1C;
+}
+
+.ship-console-command-message {
+    padding-left: 70px;
+}
+
+.ship-console-group-message {
+    margin: 2px;
+    padding: 2px;
+    padding-left: 40px;
+}
+
+.ship-console-checkmark {
+    color: #65cea7;
+    font-size: 1.25em;
+    line-height: 0.8em;
+    display: inline-block;
+    padding-left: 1.2%;
+}
+
+.ship-console-xmark {
+    color: #fc8675;
+    font-size: 1.25em;
+    line-height: 0.6em;
+    display: inline-block;
+    padding-left: 1.2%;
+}
+
+.temp {
+
+}
+
+.temp2 {
+}
+
+.temp3 {
+
+}
+
+@media screen and (max-width: 1000px) {
+
+    .temp {display:none;}
+
+}
+
+@media screen and (min-width: 1000px)  {
+
+    .temp2 {display:none;}
+
+}
+
+@media screen and (max-width: 600px)  {
+
+    .temp3 {display:none;}
+
+}
+

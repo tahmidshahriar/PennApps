@@ -1,0 +1,18 @@
+@import 'assets/theme/endless-1.5.1/bootstrap/css/bootstrap.min.css';
+@import 'assets/theme/endless-1.5.1/css/endless.css';
+@import 'assets/theme/endless-1.5.1/css/endless-skin.css';
+@import 'assets/theme/endless-1.5.1/css/pace.css';
+@import 'assets/theme/endless-1.5.1/css/slider.css';
+
+@import 'assets/fonts/font-awesome-4.3.0/css/font-awesome.min.css';
+@import 'assets/fonts/octicons/octicons.css';
+@import 'assets/fonts/font-mfizz-1.2/font-mfizz.css';
+@import 'assets/fonts/Font-Awesome-Docker-Icon-master/fontcustom/fontcustom.css';
+
+@import 'assets/libs/angular-chart.js/angular-chart.css';
+@import 'assets/libs/angular-xeditable-0.1.8/css/xeditable.css';
+@import 'assets/libs/rzslider-0.1.21/rzslider.min.css';
+
+@import 'assets/theme/shippable/shippable.css';
+@import 'assets/theme/shippable/shippable-status.css';
+@import './animate.css';

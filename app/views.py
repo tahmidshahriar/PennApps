@@ -1,7 +1,7 @@
 from flask import render_template, flash, redirect, request
 from app import app
 from .forms import LoginForm, LunchForm
-import pymongo
+import pymongo, time
 
 
 @app.route('/')
@@ -35,7 +35,7 @@ def signup():
 			print "Could not connect to MongoDB: %s" % e
 			return redirect('/index')
 	else:
-		return render_template('login.html', title='Sign In', form=form)
+		return render_template('signup.html', title='Sign Up', form=form)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -49,9 +49,9 @@ def login():
 			if(len(usernameToVerify) == 0):
 				return redirect('/login')
 			elif(request.form['password'] == usernameToVerify[0]['password']):
-				return redirect('www.google.com')
+				return redirect('/newsFeedStuff')
 			else:
-				return redirect('www.abc.xyz')
+				return redirect('/login')
 
 
 		except pymongo.errors.ConnectionFailure, e:
@@ -60,13 +60,9 @@ def login():
 	else:
 		return render_template('login.html', title='Sign In', form=form)
 
-@app.route('/addLunchRequest')
-def showAddWish():
-    return render_template('addWish.html')
 
-
-@app.route('/lunchPost', methods=['GET', 'POST'])
-def lunchPost():
+@app.route('/newsFeedStuff', methods=['GET', 'POST'])
+def newsFeedStuff():
 	form = LunchForm()
 	if form.validate_on_submit():
 		try:
@@ -76,15 +72,26 @@ def lunchPost():
 			data = {}
 			data['title'] = request.form['title']
 			data['post'] = request.form['post']
+			data['time'] = time.strftime("%d/%m/%y")
 			lunchDetails.insert(data)
-			return redirect('/index')
+			return redirect('/newsFeedStuff')
+
 		except pymongo.errors.ConnectionFailure, e:
 			print "Could not connect to MongoDB: %s" % e
-			return redirect('/temp.html')
+			return redirect('/newsFeedStuff')
 	else:
-		return render_template('temp.html', title='ADD A WISH', form=form)
+		try:
+			conn=pymongo.MongoClient()
+			db = conn.pennapps
+			lunchDetails = db.lunchDetails
+			myList = list(lunchDetails.find())
+			return render_template('newsFeed.html', title='NewsFeed', myList = myList, form = form)
+		
+		except pymongo.errors.ConnectionFailure, e:
+			print "Could not connect to MongoDB: %s" % e
+			return render_template('newsFeed.html', title='NewsFeed', myList = myList, form = form)
 
-
+<<<<<<< HEAD
 @app.route('/newsFeedStuff', methods=['GET', 'POST'])
 def newsFeed():
 	try:
@@ -104,6 +111,9 @@ def newsFeed():
 	except pymongo.errors.ConnectionFailure, e:
 		print "Could not connect to MongoDB: %s" % e
 		return redirect('/temp.html')
+=======
+
+>>>>>>> upstream/master
 
 
 

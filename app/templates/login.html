@@ -1,13 +1,40 @@
-<h1>Sign In</h1>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>PennLunch App</title>
+ 
+    
+    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+ 
+    <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
+    <link href="../static/signup.css" rel="stylesheet">
+    
+  </head>
+
+  <body>
+
+    <div class="container">
+      <div class="header">
+        <nav>
+          <ul class="nav nav-pills pull-right">
+            <li role="presentation" ><a href="/index">Home</a></li>
+            <li role="presentation" class="active"><a href="/login">Log In</a></li>
+            <li role="presentation"><a href="/signup">Sign Up</a></li>
+          </ul>
+        </nav>
+        <h3 class="text-muted">PennLunch</h3>
+      </div>
+
+<h1>Log In</h1>
   <form action="" method="post" name="login">
       {{ form.hidden_tag() }}
       <p>
-          Please enter your username:<br>
+          Username:<br>
           {{ form.username(size=80) }}<br>
       </p>
       <p>
-          Please enter your password:<br>
+          Password:<br>
           {{ form.password(size=80) }}<br>
       </p>
-      <p><input type="submit" value="Sign In"></p>
+      <p><input type="submit" value="Log In"></p>
   </form>
