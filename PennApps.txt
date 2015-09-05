@@ -1,0 +1,13 @@
+Page 1 (Home Page) - Front page
+	Task 1) Create button for sign up and button for sign in
+	Task 2) Design page
+
+Page 2 (Registration) - Reached after sign up is clicked
+	Task 1) Create form
+	Task 2) Have submit button on form
+	Task 3) Cause submit button to make a database entry
+	Task 4) Make sure new sign up entry is fine (no same username, email, etc. all 		need stuff filled.)
+	Task 5) Design page
+
+Test
+
