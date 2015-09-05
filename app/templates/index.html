@@ -7,13 +7,13 @@
     <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
  
     <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
-    <link href="../static/signup.css" rel="stylesheet">
+    <link href="../static/app.css" rel="stylesheet">
     
   </head>
 
   <body>
 
-  	<div class="container">
+  	<div class="containers">
       <div class="header">
         <nav>
           <ul class="nav nav-pills pull-right">
@@ -28,5 +28,32 @@
     <title>{{ title }} - microblog</title>
       <h1>{{ user1.nickname }}: {{user1.statement}}</h1>
       <h1>{{ user2.nickname }}: {{user2.statement}}</h1>
+
+    <div class="container" id="newfriends">
+      <h1> <strong> <center> Meet New Friends </center> <strong> </h1>
+      <p> <center> Grab meals with students you otherwise never would've met </center> </p>
+    </div>
+
+    <div class="row" id="pics">
+            <div class="col-md-4" id="pic">
+              
+              <img src="static/juliadrinksagain.jpg" alt="Paul Rivera teaching">
+
+            </div>
+
+            <div class="col-md-4" id="pic">
+              
+              <img src="static/jianfood.jpg" alt="Paul Rivera teaching">
+
+            </div>
+
+            <div class="col-md-4" id="pic">
+
+              <img src="static/pataya.jpg" alt="Students pitching">
+
+            </div>
+    </div>
+
+
   </body>
 </html>
