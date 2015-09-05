@@ -3,6 +3,10 @@ from app import app
 from .forms import LoginForm, LunchForm, SignupForm
 import pymongo, time
 from twilio.rest import TwilioRestClient
+from flask_mail import Mail, Message
+
+mail = Mail()
+mail.init_app(app)
 
 @app.route('/')
 @app.route('/index')
@@ -27,6 +31,8 @@ def signup():
 			userInfo = db.userInfo
 			print userInfo
 			data = {}
+			if (len(list(userInfo.find({'username' : request.form['username']}))) > 0):
+				return redirect('/signup')
 			data['username'] = request.form['username']
 			data['password'] = request.form['password']
 			data['firstname'] = request.form['firstname']
@@ -34,6 +40,10 @@ def signup():
 			data['phone'] = request.form['phone']
 			data['email'] = request.form['email']
 			userInfo.insert(data)
+			msg = Message("Hello",
+                  sender="tahmids94@gmail.com",
+                  recipients=[data['email']])
+			mail.send(msg)
 			return redirect('/index')
 
 		except pymongo.errors.ConnectionFailure, e:
@@ -54,7 +64,7 @@ def login():
 			if(len(usernameToVerify) == 0):
 				return redirect('/login')
 			elif(request.form['password'] == usernameToVerify[0]['password']):
-				session['loggedinName'] = usernameToVerify[0]['firstname'] + usernameToVerify[0]['lastname']
+				session['loggedinName'] = usernameToVerify[0]['firstname'] + ' ' + usernameToVerify[0]['lastname']
 				session['loggedinPhone'] = usernameToVerify[0]['phone']
 				return redirect('/newsFeedStuff')
 			else:
