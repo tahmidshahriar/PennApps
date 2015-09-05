@@ -15,6 +15,7 @@
 
   <body>
 
+<<<<<<< HEAD
     <div class = "main">
         <div id = "headerBar">
         <div id="logo">PennLunch</div>
@@ -22,6 +23,28 @@
         <button class='btns'  id="home" style="color: white;"> <a href="/index"> Home </a> </button>
         <button class='btns' id="login"><a href="/login"> Login </a> </button> 
         <button class='btns' id="signup"><a href="/signup"> Sign Up </a> </button> 
+=======
+    <div class="containers">
+      <div class="header">
+        <nav>
+          <ul class="nav nav-pills pull-right">
+            <li role="presentation" ><a href="/index">Home</a></li>
+                        {% if session.get('loggedinName') == None %} 
+            <li role="presentation" class="active"><a href="/login">Log In</a></li>
+            <li role="presentation"><a href="/signup">Sign Up</a></li>
+                        {% endif %}
+
+    {% if session.get('loggedinName') != None %} 
+                        <li role="presentation"><a href="/signout">Sign Out</a></li>
+    {% endif %}
+
+
+
+          </ul>
+        </nav>
+        <h3 class="text-muted">PennLunch</h3>
+      </div>
+>>>>>>> upstream/master
 
 <h1><center>Log In</center></h1>
   <form action="" method="post" name="login"><center>

@@ -3,6 +3,10 @@ from app import app
 from .forms import LoginForm, LunchForm, SignupForm
 import pymongo, time
 from twilio.rest import TwilioRestClient
+from flask_mail import Mail, Message
+
+mail = Mail()
+mail.init_app(app)
 
 @app.route('/')
 @app.route('/index')
@@ -14,7 +18,8 @@ def index():
     return render_template('index.html',
                            title='Home',
                            user1=user1,
-                           user2=user2)
+                           user2=user2,
+                           session=session)
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
@@ -26,6 +31,8 @@ def signup():
 			userInfo = db.userInfo
 			print userInfo
 			data = {}
+			if (len(list(userInfo.find({'username' : request.form['username']}))) > 0):
+				return redirect('/signup')
 			data['username'] = request.form['username']
 			data['password'] = request.form['password']
 			data['firstname'] = request.form['firstname']
@@ -33,13 +40,17 @@ def signup():
 			data['phone'] = request.form['phone']
 			data['email'] = request.form['email']
 			userInfo.insert(data)
+			msg = Message("Hello",
+                  sender="tahmids94@gmail.com",
+                  recipients=[data['email']])
+			mail.send(msg)
 			return redirect('/index')
 
 		except pymongo.errors.ConnectionFailure, e:
 			print "Could not connect to MongoDB: %s" % e
 			return redirect('/index')
 	else:
-		return render_template('signup.html', title='Sign Up', form=form)
+		return render_template('signup.html', title='Sign Up', form=form, session = session)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -53,7 +64,7 @@ def login():
 			if(len(usernameToVerify) == 0):
 				return redirect('/login')
 			elif(request.form['password'] == usernameToVerify[0]['password']):
-				session['loggedinName'] = usernameToVerify[0]['firstname'] + usernameToVerify[0]['lastname']
+				session['loggedinName'] = usernameToVerify[0]['firstname'] + ' ' + usernameToVerify[0]['lastname']
 				session['loggedinPhone'] = usernameToVerify[0]['phone']
 				return redirect('/newsFeedStuff')
 			else:
@@ -68,6 +79,8 @@ def login():
 
 @app.route('/newsFeedStuff', methods=['GET', 'POST'])
 def newsFeedStuff():
+	if (session.get('loggedinName') == None):
+		return redirect('/index')
 	form = LunchForm()
 	if form.validate_on_submit():
 		try:
@@ -111,3 +124,8 @@ def twilioMessage(number):
 	    from_="+16463625482") # Replace with your Twilio number
 	return redirect('/newsFeedStuff')
 
+@app.route('/signout', methods=['GET', 'POST'])
+def signout():
+	session['loggedinName'] = None
+	session['loggedinPhone'] = None
+	return redirect('/index')
