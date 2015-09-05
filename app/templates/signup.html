@@ -14,39 +14,24 @@
   </head>
 
   <body>
-
-<<<<<<< HEAD
     <div class = "main">
         <div id = "headerBar">
         <div id="logo">PennLunch</div>
 
         <button class='btns'  id="home" style="color: white;"> <a href="/index"> Home </a> </button>
+        {% if session.get('loggedinName') == None %} 
         <button class='btns' id="login"><a href="/login"> Login </a> </button> 
         <button class='btns' id="signup"><a href="/signup"> Sign Up </a> </button> 
+        {% endif %}
+        {% if session.get('loggedinName') != None %} 
+        <button class='btns' id="signout"><a href="/signout"> Sign Out </a> </button> 
+        {% endif %}
+
 
 <h1 style="margin:20px">Sign Up</h1>
-=======
     <div class="containers">
-      <div class="header">
-        <nav>
-          <ul class="nav nav-pills pull-right">
-            <li role="presentation" ><a href="/index">Home</a></li>
-            {% if session.get('loggedinName') == None %} 
-            <li role="presentation"><a href="/login">Log In</a></li> 
-            <li role="presentation" class="active"><a href="/signup">Sign Up</a></li>
-            {% endif %}
-            {% if session.get('loggedinName') != None %} 
-                        <li role="presentation"><a href="/signout">Sign Out</a></li>
-            {% endif %}
 
 
-          </ul>
-        </nav>
-        <h3 class="text-muted">PennLunch</h3>
-      </div>
-
-<h1>Sign Up</h1>
->>>>>>> upstream/master
   <form action="" method="post" name="login">
       {{ form.hidden_tag() }}
       <p>
