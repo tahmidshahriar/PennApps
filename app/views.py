@@ -1,8 +1,8 @@
-from flask import render_template, flash, redirect, request
+from flask import render_template, flash, redirect, request, session
 from app import app
-from .forms import LoginForm, LunchForm
+from .forms import LoginForm, LunchForm, SignupForm
 import pymongo, time
-
+from twilio.rest import TwilioRestClient
 
 @app.route('/')
 @app.route('/index')
@@ -18,7 +18,7 @@ def index():
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
-	form = LoginForm()
+	form = SignupForm()
 	if form.validate_on_submit():
 		try:
 			conn=pymongo.MongoClient()
@@ -28,6 +28,10 @@ def signup():
 			data = {}
 			data['username'] = request.form['username']
 			data['password'] = request.form['password']
+			data['firstname'] = request.form['firstname']
+			data['lastname'] = request.form['lastname']
+			data['phone'] = request.form['phone']
+			data['email'] = request.form['email']
 			userInfo.insert(data)
 			return redirect('/index')
 
@@ -49,10 +53,11 @@ def login():
 			if(len(usernameToVerify) == 0):
 				return redirect('/login')
 			elif(request.form['password'] == usernameToVerify[0]['password']):
+				session['loggedinName'] = usernameToVerify[0]['firstname'] + usernameToVerify[0]['lastname']
+				session['loggedinPhone'] = usernameToVerify[0]['phone']
 				return redirect('/newsFeedStuff')
 			else:
 				return redirect('/login')
-
 
 		except pymongo.errors.ConnectionFailure, e:
 			print "Could not connect to MongoDB: %s" % e
@@ -72,7 +77,10 @@ def newsFeedStuff():
 			data = {}
 			data['title'] = request.form['title']
 			data['post'] = request.form['post']
-			data['time'] = time.strftime("%d/%m/%y")
+			data['time'] = time.strftime("%m/%d/%y")
+			data['name'] = session['loggedinName']
+			data['phone'] = session['loggedinPhone']
+			
 			lunchDetails.insert(data)
 			return redirect('/newsFeedStuff')
 
@@ -85,32 +93,21 @@ def newsFeedStuff():
 			db = conn.pennapps
 			lunchDetails = db.lunchDetails
 			myList = list(lunchDetails.find())
-			return render_template('newsFeed.html', title='NewsFeed', myList = myList, form = form)
+			return render_template('newsFeed.html', title='NewsFeed', myList = myList, form = form, myFunc = twilioMessage)
 		
 		except pymongo.errors.ConnectionFailure, e:
 			print "Could not connect to MongoDB: %s" % e
-			return render_template('newsFeed.html', title='NewsFeed', myList = myList, form = form)
+			return render_template('newsFeed.html', title='NewsFeed', myList = myList, form = form, myFunc = twilioMessage)
 
-@app.route('/newsFeedStuff', methods=['GET', 'POST'])
-def newsFeed():
-	try:
-		conn=pymongo.MongoClient()
-		db = conn.pennapps
-		lunchDetails = db.lunchDetails
-		myList = list(lunchDetails.find())
-		f = open('temporary.html','w')
-		message = """<html>
-		<head></head>
-		<body><p> s""" + myList[0]['title'] + """</p></body>
-		</html>"""
-		f.write(message)
-
-		f.close()
-		return render_template('temporary.html')	
-	except pymongo.errors.ConnectionFailure, e:
-		print "Could not connect to MongoDB: %s" % e
-		return redirect('/temp.html')
-
-
-
+@app.route('/sendMessage/<number>', methods=['GET', 'POST'])
+def twilioMessage(number):
+	# Your Account Sid and Auth Token from twilio.com/user/account
+	account_sid = "ACe35ea76b49265923ca76b9e678ce2893"
+	auth_token  = "369e13949b072a54ab72b3e8547f226d"
+	client = TwilioRestClient(account_sid, auth_token)
+	 
+	message = client.messages.create(body=session['loggedinName'] + " would like to contact you for lunch. If interested, please responded at " + session['loggedinPhone'],
+	    to=number,    # Replace with your phone number
+	    from_="+16463625482") # Replace with your Twilio number
+	return redirect('/newsFeedStuff')
 
