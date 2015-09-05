@@ -9,3 +9,5 @@ Page 2 (Registration) - Reached after sign up is clicked
 	Task 4) Make sure new sign up entry is fine (no same username, email, etc. all 		need stuff filled.)
 	Task 5) Design page
 
+Test
+
