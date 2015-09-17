@@ -99,9 +99,9 @@ def newsFeedStuff():
 
 @app.route('/sendMessage/<number>', methods=['GET', 'POST'])
 def twilioMessage(number):
-	# Your Account Sid and Auth Token from twilio.com/user/account
-	account_sid = "ACe35ea76b49265923ca76b9e678ce2893"
-	auth_token  = "369e13949b072a54ab72b3e8547f226d"
+	# Your Account Sid and Auth Token from twilio.com/user/account (fill it up)
+	account_sid = ""
+	auth_token  = ""
 	client = TwilioRestClient(account_sid, auth_token)
 	 
 	message = client.messages.create(body=session['loggedinName'] + " would like to contact you for lunch. If interested, please responded at " + session['loggedinPhone'],
